@@ -1,0 +1,23 @@
+
+###health
+GET http://123.206.29.15:9990/health
+Content-Type: application/json
+
+{
+}
+
+###SetBadgerKey /badger/set/:key/:value
+POST http://123.206.29.15:9990/badger/set
+Content-Type: application/json
+
+{
+    "key":"0x762009cd5dcabb5a125008d70f5efdbdff2aa782",
+    "value":"{\"address\":\"762009cd5dcabb5a125008d70f5efdbdff2aa782\",\"crypto\":{\"cipher\":\"aes-128-ctr\",\"ciphertext\":\"f16da3790e0bef860dd91a3e0ec16d5ac63db57d0cbd6cf77180880245353f56\",\"cipherparams\":{\"iv\":\"074ea6979ebec9e47b620e4d3f63e478\"},\"kdf\":\"scrypt\",\"kdfparams\":{\"dklen\":32,\"n\":262144,\"p\":1,\"r\":8,\"salt\":\"31b5b7cc45464cce4fd94fd226a246678e263e1ec238fe47d713018e882e6fa5\"},\"mac\":\"8aeea5fdc6acf46b982891e8de07d32433fe1a83e7d135aab788fb3bc3256682\"},\"id\":\"543cbd56-1024-47bf-a0a8-3dd3b00d1dcb\",\"version\":3}"
+}
+
+###GetBadgerKey /badger/get/:key
+GET  http://123.206.29.15:9990/badger/get/0x762009cd5dcabb5a125008d70f5efdbdff2aa782
+Content-Type: application/json
+
+{
+}
