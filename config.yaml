@@ -14,7 +14,8 @@ server:
 ethereum:
   chainID: 12759
   host: http://localhost:8540
-  passphrase: tDydrX7ia8Zx6Vwr  # rand
+  address: "0x762009cd5dcabb5a125008d70f5efdbdff2aa782"
+  passphrase: "613131313131"  # rand
 
 ###############################################################################
 #

@@ -38,6 +38,7 @@ func initConfig() {
 
 	Ethereum.ChainID = viper.GetInt64("ethereum.chainID")
 	Ethereum.Host = viper.GetString("ethereum.host")
+	Ethereum.Address = viper.GetString("ethereum.address")
 	Ethereum.Passphrase = viper.GetString("ethereum.passphrase")
 
 	MariaDB.Dialect = viper.GetString("database.dialect")
