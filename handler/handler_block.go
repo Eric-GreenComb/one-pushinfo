@@ -27,13 +27,12 @@ func WriteBlock(c *gin.Context) {
 	_txID, err := SendEthereumCoin(_formParams.Desc)
 
 	var _order bean.Order
-	_order.OrderID = _formParams.OrderID
+	_order.OrderCode = _formParams.OrderCode
+	_order.GoodsID = _formParams.GoodsID
+	_order.GoodName = _formParams.GoodName
 	_order.Amount = _formParams.Amount
-	_order.CatID = _formParams.CatID
-	_order.PatchID = _formParams.PatchID
 	_order.BuyTime = _formParams.BuyTime
-	_order.Account = _formParams.Account
-	_order.Mobile = _formParams.Mobile
+	_order.UserName = _formParams.UserName
 	_order.Type = 0
 	_order.Desc = _formParams.Desc
 	_order.TxID = _txID
@@ -70,13 +69,9 @@ func PutWinerTxID(c *gin.Context) {
 	_txID, err := SendEthereumCoin(_formParams.Desc)
 
 	var _order bean.Order
-	_order.OrderID = _formParams.OrderID
-	_order.Amount = _formParams.Amount
-	_order.CatID = _formParams.CatID
-	_order.PatchID = _formParams.PatchID
-	_order.BuyTime = _formParams.BuyTime
-	_order.Account = _formParams.Account
-	_order.Mobile = _formParams.Mobile
+	_order.GoodsID = _formParams.GoodsID
+	_order.GoodName = _formParams.GoodName
+	_order.BuyTime = _formParams.WinTime
 	_order.Type = 1
 	_order.Desc = _formParams.Desc
 	_order.TxID = _txID

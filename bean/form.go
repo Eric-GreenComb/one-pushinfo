@@ -25,10 +25,12 @@ type FormParams struct {
 	Mnemonic    string `form:"mnemonic" json:"mnemonic"`         //
 	Path        string `form:"path" json:"path"`                 //
 
-	OrderID string `form:"orderid" json:"orderid"` // orderid
-	CatID   string `form:"catid" json:"catid"`     // catid
-	PatchID string `form:"patchid" json:"patchid"` // patchid
-	BuyTime string `form:"buytime" json:"buytime"` // buytime
-	Account string `form:"account" json:"account"` // account
-	Mobile  string `form:"mobile" json:"mobile"`   // mobile
+	OrderCode string `form:"ordercode" json:"ordercode"` // 订单编码
+	GoodsID   string `form:"goodsid" json:"goodsid"`     // 货物id
+	GoodName  string `form:"goodname" json:"goodname"`   // Iphone(第三期）
+	BuyTime   string `form:"buytime" json:"buytime"`     // 购买时间
+	UserName  string `form:"username" json:"username"`   // 购买用户名称
+	Type      int8   `form:"type" json:"type"`           // 类型  0为下单，1为抽奖
+
+	WinTime string `form:"wintime" json:"wintime"` // 开奖时间
 }
