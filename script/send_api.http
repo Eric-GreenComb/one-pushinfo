@@ -11,18 +11,17 @@ POST http://localhost:9990/block/write
 Content-Type: application/json
 
 {
-    "orderid":"order0006",
+    "ordercode":"order0001",
     "amount":"1000",
-    "catid":"cat0001",
-    "patchid":"pat0001",
+    "goodsid":"cat0001",
+    "goodname":"pat0001",
     "buytime":"20180910",
-    "account":"one-buy",
-    "mobile":"13333333331",
+    "username":"one-buy",
     "desc":"长生生物科技股份有限公司疫苗造假事件"
 }
 
 ###ReadBlock /block/read/:orderid
-GET http://localhost:9990/block/read/order0001
+GET http://localhost:9990/block/read/order0006
 Content-Type: application/json
 
 {
@@ -33,9 +32,9 @@ POST http://localhost:9990/block/winer
 Content-Type: application/json
 
 {
-    "orderid":"00000000",
-    "catid":"cat0001",
-    "patchid":"pat0001",
+    "wintime":"20180910",
+    "goodsid":"cat0001",
+    "goodname":"pat0001",
     "desc":"一轮结束后记录，结果返回txid"
 }
 

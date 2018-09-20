@@ -11,11 +11,11 @@ func (persist *Persist) CreateOrder(order bean.Order) error {
 }
 
 // OrderInfo OrderInfo Persist
-func (persist *Persist) OrderInfo(orderID string) (bean.Order, error) {
+func (persist *Persist) OrderInfo(orderCode string) (bean.Order, error) {
 
 	var order bean.Order
 
-	err := persist.db.Table("orders").Where("order_id = ?", orderID).First(&order).Error
+	err := persist.db.Table("orders").Where("order_code = ?", orderCode).First(&order).Error
 
 	return order, err
 }

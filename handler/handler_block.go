@@ -24,7 +24,9 @@ func WriteBlock(c *gin.Context) {
 	var _formParams bean.FormParams
 	c.BindJSON(&_formParams)
 
-	_txID, err := SendEthereumCoin(_formParams.Desc)
+	_desc := _formParams.OrderCode + "," + _formParams.GoodsID + "," + _formParams.GoodName + "," + _formParams.Amount + "," + _formParams.BuyTime + "," + _formParams.UserName + "," + _formParams.Desc
+
+	_txID, err := SendEthereumCoin(_desc)
 
 	var _order bean.Order
 	_order.OrderCode = _formParams.OrderCode
@@ -66,7 +68,9 @@ func PutWinerTxID(c *gin.Context) {
 	var _formParams bean.FormParams
 	c.BindJSON(&_formParams)
 
-	_txID, err := SendEthereumCoin(_formParams.Desc)
+	_desc := _formParams.GoodsID + "," + _formParams.GoodName + "," + _formParams.WinTime + "," + _formParams.Desc
+
+	_txID, err := SendEthereumCoin(_desc)
 
 	var _order bean.Order
 	_order.GoodsID = _formParams.GoodsID
