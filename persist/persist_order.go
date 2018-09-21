@@ -25,7 +25,7 @@ func (persist *Persist) GetAllOrders(catid, patchid string) ([]bean.Order, error
 
 	var orders []bean.Order
 
-	err := persist.db.Table("orders").Where("cat_id = ? AND patch_id = ?", catid, patchid).Find(&orders).Error
+	err := persist.db.Table("orders").Where("goods_id = ? AND good_name = ?", catid, patchid).Find(&orders).Error
 
 	return orders, err
 }
