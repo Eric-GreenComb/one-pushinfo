@@ -3,6 +3,7 @@ package ethereum
 import (
 	"crypto/ecdsa"
 	"encoding/hex"
+	"fmt"
 	"math/big"
 
 	ethcommon "github.com/ethereum/go-ethereum/common"
@@ -39,6 +40,9 @@ func SendEthCoins(to string, nonce uint64, amountWei *big.Int, priv *ecdsa.Priva
 
 	gasPrice := GasPrice()
 
+	fmt.Println("gas price : ", gasPrice)
+	fmt.Println("nonce ", nonce)
+
 	tx := types.NewTransaction(nonce, ethcommon.HexToAddress(to), amountWei, gasDefaultLimit, gasPrice, data)
 
 	var signed *types.Transaction
@@ -56,10 +60,13 @@ func SendEthCoins(to string, nonce uint64, amountWei *big.Int, priv *ecdsa.Priva
 	txID := &ethcommon.Hash{}
 	err = client.Call(&txID, "eth_sendRawTransaction", ethcommon.ToHex(data))
 	if err != nil {
+		fmt.Println(err.Error())
 		return "", err
 	}
 
 	txid := txID.String()
+
+	fmt.Println(txid)
 
 	return txid, nil
 }

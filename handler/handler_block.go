@@ -128,16 +128,16 @@ func SendEthereumCoin(desc string) (string, error) {
 	fmt.Println(_amountBigInt)
 	_chainIDBigInt := big.NewInt(config.Ethereum.ChainID)
 
-	_nonce, err := ethereum.PendingNonce(_from)
-	if err != nil {
-		return txID.String(), err
-	}
+	// _nonce, err := ethereum.PendingNonce(_from)
+	// if err != nil {
+	// 	return txID.String(), err
+	// }
 
 	_inputData := []byte(desc)
-	_txID, err := ethereum.SendEthCoins(_to, _nonce, _amountBigInt, _key.PrivateKey, _chainIDBigInt, _inputData)
+	_txID, err := ethereum.SendEthCoins(_to, config.PendingNonce, _amountBigInt, _key.PrivateKey, _chainIDBigInt, _inputData)
 	if err != nil {
 		return txID.String(), err
 	}
-
+	config.PendingNonce++
 	return _txID, err
 }

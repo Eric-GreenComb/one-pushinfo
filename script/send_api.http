@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 ###WriteBlock /block/write 参数以json形式提交
-POST http://123.206.29.15:9990/block/write
+POST http://localhost:9990/block/write
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ###PutWinerTxID /block/winer 参数以json提交
-POST http://123.206.29.15:9990/block/winer
+POST http://localhost:9990/block/winer
 Content-Type: application/json
 
 {

@@ -12,6 +12,9 @@ import (
 // Ethereum Ethereum Config
 var Ethereum bean.EthereumConfig
 
+// PendingNonce PendingNonce
+var PendingNonce uint64
+
 // Server Server Config
 var Server bean.ServerConfig
 

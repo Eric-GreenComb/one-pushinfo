@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -27,6 +28,13 @@ func main() {
 	persist.InitDatabase()
 
 	ethereum.Init()
+
+	_nonce, err := ethereum.PendingNonce(config.Ethereum.Address)
+	if err != nil {
+		log.Fatal(err)
+	}
+	config.PendingNonce = _nonce
+	fmt.Println(config.Ethereum.Address, " PendingNonce ", config.PendingNonce)
 
 	router := gin.Default()
 
