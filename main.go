@@ -13,7 +13,7 @@ import (
 	"github.com/Eric-GreenComb/one-pushinfo/config"
 	"github.com/Eric-GreenComb/one-pushinfo/ethereum"
 	"github.com/Eric-GreenComb/one-pushinfo/handler"
-	"github.com/Eric-GreenComb/one-pushinfo/nsq"
+	// "github.com/Eric-GreenComb/one-pushinfo/nsq"
 	"github.com/Eric-GreenComb/one-pushinfo/persist"
 )
 
@@ -30,7 +30,7 @@ func main() {
 
 	ethereum.Init()
 
-	nsq.Init()
+	// nsq.Init()
 
 	_nonce, err := ethereum.PendingNonce(config.Ethereum.Address)
 	if err != nil {
