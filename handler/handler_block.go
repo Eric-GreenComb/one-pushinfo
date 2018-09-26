@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"bytes"
 	"fmt"
 	"math/big"
 	"net/http"
@@ -24,9 +25,29 @@ func WriteBlock(c *gin.Context) {
 	var _formParams bean.FormParams
 	c.BindJSON(&_formParams)
 
-	_desc := _formParams.OrderCode + "," + _formParams.GoodsID + "," + _formParams.GoodName + "," + _formParams.Amount + "," + _formParams.BuyTime + "," + _formParams.UserName + "," + _formParams.Desc
+	var _buf bytes.Buffer
+	_buf.WriteString("订单号:")
+	_buf.WriteString(_formParams.OrderCode)
+	_buf.WriteString(";商品ID:")
+	_buf.WriteString(_formParams.GoodsID)
+	_buf.WriteString(";商品名称:")
+	_buf.WriteString(_formParams.GoodName)
+	_buf.WriteString(";金额:")
+	_buf.WriteString(_formParams.Amount)
+	_buf.WriteString(";时间:")
+	_buf.WriteString(_formParams.BuyTime)
+	_buf.WriteString(";用户:")
+	_buf.WriteString(_formParams.UserName)
+	_buf.WriteString(";购买编码:")
+	_buf.WriteString(_formParams.Desc)
+
+	_desc := _buf.String()
 
 	_txID, err := SendEthereumCoin(_desc)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"errcode": 1, "msg": err.Error()})
+		return
+	}
 
 	var _order bean.Order
 	_order.OrderCode = _formParams.OrderCode
@@ -68,9 +89,23 @@ func PutWinerTxID(c *gin.Context) {
 	var _formParams bean.FormParams
 	c.BindJSON(&_formParams)
 
-	_desc := _formParams.GoodsID + "," + _formParams.GoodName + "," + _formParams.WinTime + "," + _formParams.Desc
+	var _buf bytes.Buffer
+	_buf.WriteString("商品ID:")
+	_buf.WriteString(_formParams.GoodsID)
+	_buf.WriteString(";商品名称:")
+	_buf.WriteString(_formParams.GoodName)
+	_buf.WriteString(";时间:")
+	_buf.WriteString(_formParams.WinTime)
+	_buf.WriteString(";备注:")
+	_buf.WriteString(_formParams.Desc)
+
+	_desc := _buf.String()
 
 	_txID, err := SendEthereumCoin(_desc)
+	if err != nil {
+		c.JSON(http.StatusOK, gin.H{"errcode": 1, "msg": err.Error()})
+		return
+	}
 
 	var _order bean.Order
 	_order.GoodsID = _formParams.GoodsID

@@ -11,11 +11,11 @@ POST http://localhost:9990/block/write
 Content-Type: application/json
 
 {
-    "ordercode":"order0001",
-    "amount":"1000",
-    "goodsid":"cat0001",
-    "goodname":"pat0001",
-    "buytime":"20180910",
+    "ordercode":"order0003",
+    "amount":"3000",
+    "goodsid":"cat0003",
+    "goodname":"pat0003",
+    "buytime":"20180926",
     "username":"one-buy",
     "desc":"长生生物科技股份有限公司疫苗造假事件"
 }

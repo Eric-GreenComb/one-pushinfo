@@ -13,6 +13,7 @@ import (
 	"github.com/Eric-GreenComb/one-pushinfo/config"
 	"github.com/Eric-GreenComb/one-pushinfo/ethereum"
 	"github.com/Eric-GreenComb/one-pushinfo/handler"
+	"github.com/Eric-GreenComb/one-pushinfo/nsq"
 	"github.com/Eric-GreenComb/one-pushinfo/persist"
 )
 
@@ -28,6 +29,8 @@ func main() {
 	persist.InitDatabase()
 
 	ethereum.Init()
+
+	nsq.Init()
 
 	_nonce, err := ethereum.PendingNonce(config.Ethereum.Address)
 	if err != nil {
@@ -65,6 +68,11 @@ func main() {
 		r2.GET("/nonce", handler.PendingNonce)
 		r2.POST("/send", handler.SendEthCoin)
 		r2.GET("/balance/:addr", handler.GetBalance)
+	}
+
+	r3 := router.Group("/nsq")
+	{
+		r3.POST("/write", handler.WriteNsq)
 	}
 
 	r100 := router.Group("/badger")

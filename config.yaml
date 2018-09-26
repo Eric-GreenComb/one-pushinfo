@@ -12,8 +12,8 @@ server:
     limit: 10 
   
 ethereum:
-  chainID: 12759
-  host: http://localhost:8540
+  chainID: 1
+  host: https://mainnet.infura.io/1UoO4I
   address: "0x762009cd5dcabb5a125008d70f5efdbdff2aa782"
   passphrase: "613131313131"  # rand
 
