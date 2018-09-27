@@ -20,12 +20,6 @@ Content-Type: application/json
     "desc":"长生生物科技股份有限公司疫苗造假事件"
 }
 
-###ReadBlock /block/read/:orderid
-GET http://123.206.29.15:9990/block/read/order0006
-Content-Type: application/json
-
-{
-}
 
 ###PutWinerTxID /block/winer 参数以json提交
 POST http://localhost:9990/block/winer

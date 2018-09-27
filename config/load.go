@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/spf13/viper"
@@ -9,17 +8,11 @@ import (
 	"github.com/Eric-GreenComb/one-pushinfo/bean"
 )
 
-// Ethereum Ethereum Config
-var Ethereum bean.EthereumConfig
-
-// PendingNonce PendingNonce
-var PendingNonce uint64
-
 // Server Server Config
 var Server bean.ServerConfig
 
-// MariaDB 数据库相关配置
-var MariaDB bean.DBConfig
+// Nsq nsq配置
+var Nsq bean.NsqConfig
 
 func init() {
 	readConfig()
@@ -36,23 +29,9 @@ func readConfig() {
 func initConfig() {
 	Server.Port = strings.Split(viper.GetString("server.port"), ",")
 	Server.Mode = viper.GetString("server.mode")
-	Server.GormLogMode = viper.GetString("server.gorm.LogMode")
-	Server.ViewLimit = viper.GetInt("server.view.limit")
 
-	Ethereum.ChainID = viper.GetInt64("ethereum.chainID")
-	Ethereum.Host = viper.GetString("ethereum.host")
-	Ethereum.Address = viper.GetString("ethereum.address")
-	Ethereum.Passphrase = viper.GetString("ethereum.passphrase")
+	Nsq.Host = viper.GetString("nsq.host")
+	Nsq.Topic = viper.GetString("nsq.topic")
+	Nsq.TopicNum = viper.GetInt("nsq.topic_num")
 
-	MariaDB.Dialect = viper.GetString("database.dialect")
-	MariaDB.Database = viper.GetString("database.database")
-	MariaDB.User = viper.GetString("database.user")
-	MariaDB.Password = viper.GetString("database.password")
-	MariaDB.Host = viper.GetString("database.host")
-	MariaDB.Port = viper.GetInt("database.port")
-	MariaDB.Charset = viper.GetString("database.charset")
-	MariaDB.MaxIdleConns = viper.GetInt("database.maxIdleConns")
-	MariaDB.MaxOpenConns = viper.GetInt("database.maxOpenConns")
-	MariaDB.URL = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=%s&parseTime=True&loc=Local",
-		MariaDB.User, MariaDB.Password, MariaDB.Host, MariaDB.Port, MariaDB.Database, MariaDB.Charset)
 }

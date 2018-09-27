@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -11,10 +10,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 
 	"github.com/Eric-GreenComb/one-pushinfo/config"
-	"github.com/Eric-GreenComb/one-pushinfo/ethereum"
 	"github.com/Eric-GreenComb/one-pushinfo/handler"
-	// "github.com/Eric-GreenComb/one-pushinfo/nsq"
-	"github.com/Eric-GreenComb/one-pushinfo/persist"
 )
 
 var (
@@ -25,19 +21,6 @@ func main() {
 	if config.Server.Mode == "release" {
 		gin.SetMode(gin.ReleaseMode)
 	}
-
-	persist.InitDatabase()
-
-	ethereum.Init()
-
-	// nsq.Init()
-
-	_nonce, err := ethereum.PendingNonce(config.Ethereum.Address)
-	if err != nil {
-		log.Fatal(err)
-	}
-	config.PendingNonce = _nonce
-	fmt.Println(config.Ethereum.Address, " PendingNonce ", config.PendingNonce)
 
 	router := gin.Default()
 
@@ -58,27 +41,7 @@ func main() {
 	r1 := router.Group("/block")
 	{
 		r1.POST("/write", handler.WriteBlock)
-		r1.GET("/read/:orderid", handler.ReadBlock)
 		r1.POST("/winer", handler.PutWinerTxID)
-		r1.GET("/orders/:catid/:patchid", handler.GetAllOrders)
-	}
-
-	r2 := router.Group("/ethereum")
-	{
-		r2.GET("/nonce", handler.PendingNonce)
-		r2.POST("/send", handler.SendEthCoin)
-		r2.GET("/balance/:addr", handler.GetBalance)
-	}
-
-	r3 := router.Group("/nsq")
-	{
-		r3.POST("/write", handler.WriteNsq)
-	}
-
-	r100 := router.Group("/badger")
-	{
-		r100.POST("/set", handler.SetBadgerKey)
-		r100.GET("/get/:key", handler.GetBadgerKey)
 	}
 
 	for _, _port := range config.Server.Port {
