@@ -1,17 +1,17 @@
 
 ###health
-GET http://123.206.29.15:9990/health
+GET http://123.206.29.15:9980/health
 Content-Type: application/json
 
 {
 }
 
 ###WriteBlock /block/write 参数以json形式提交
-POST http://localhost:9990/block/write
+POST http://123.206.29.15:9980/block/write
 Content-Type: application/json
 
 {
-    "ordercode":"order0003",
+    "ordercode":"order0006",
     "amount":"3000",
     "goodsid":"cat0003",
     "goodname":"pat0003",
@@ -22,10 +22,11 @@ Content-Type: application/json
 
 
 ###PutWinerTxID /block/winer 参数以json提交
-POST http://localhost:9990/block/winer
+POST http://123.206.29.15:9980/block/winer
 Content-Type: application/json
 
 {
+    "ordercode":"order0009",
     "wintime":"20180910",
     "goodsid":"cat0001",
     "goodname":"pat0001",

@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/facebookgo/grace/gracehttp"
 	"github.com/gin-gonic/gin"
 	"github.com/golang/sync/errgroup"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -53,7 +54,7 @@ func main() {
 		}
 
 		g.Go(func() error {
-			return server.ListenAndServe()
+			return gracehttp.Serve(server)
 		})
 	}
 

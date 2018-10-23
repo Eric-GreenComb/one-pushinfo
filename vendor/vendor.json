@@ -9,6 +9,36 @@
 			"revisionTime": "2018-09-27T02:42:54Z"
 		},
 		{
+			"checksumSHA1": "imR2wF388/0fBU6RRWx8RvTi8Q8=",
+			"path": "github.com/facebookgo/clock",
+			"revision": "600d898af40aa09a7a93ecb9265d87b0504b6f03",
+			"revisionTime": "2015-04-10T01:09:13Z"
+		},
+		{
+			"checksumSHA1": "2Jy8ibzL8kHuenZI0LAvCLI1e98=",
+			"path": "github.com/facebookgo/grace/gracehttp",
+			"revision": "75cf19382434e82df4dd84953f566b8ad23d6e9e",
+			"revisionTime": "2018-07-06T04:00:59Z"
+		},
+		{
+			"checksumSHA1": "nj3ykV8Em7WOfvHNIo/XNTT9LOM=",
+			"path": "github.com/facebookgo/grace/gracenet",
+			"revision": "75cf19382434e82df4dd84953f566b8ad23d6e9e",
+			"revisionTime": "2018-07-06T04:00:59Z"
+		},
+		{
+			"checksumSHA1": "qW17jvGOQVNepIjy+iW53TRP44k=",
+			"path": "github.com/facebookgo/httpdown",
+			"revision": "5979d39b15c26299dc282711b0d65b113daccea6",
+			"revisionTime": "2018-07-06T03:59:22Z"
+		},
+		{
+			"checksumSHA1": "SzXvrWxavFo8HD/2hnbdu17C3VE=",
+			"path": "github.com/facebookgo/stats",
+			"revision": "1b76add642e42c6ffba7211ad7b3939ce654526e",
+			"revisionTime": "2015-10-06T22:16:25Z"
+		},
+		{
 			"checksumSHA1": "hveFTNQ9YEyYRs6SWuXM+XU9qRI=",
 			"path": "github.com/fsnotify/fsnotify",
 			"revision": "fd9ec7deca8bf46ecd2a795baaacf2b3a9be1197",
